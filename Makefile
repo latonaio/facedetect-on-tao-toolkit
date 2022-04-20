@@ -14,6 +14,6 @@ tao-convert:
 	docker exec -it facedetect-tao-toolkit tao-converter -k nvidia_tlt -d 3,416,736 -e /app/src/facedetect.engine /app/src/facedetect.etlt
 
 tao-docker-login: ## TAO用コンテナにログイン
-	docker exec -it tao-tool-kit bash
+	docker exec -it facedetect-tao-toolkit bash
 
 
