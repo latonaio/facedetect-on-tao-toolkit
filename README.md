@@ -16,6 +16,7 @@ FaceDetect は、画像内の人の顔を検出し、カテゴリラベルを返
 ### engineファイルの生成
 FaceDetect のAIモデルをデバイスに最適化するため、 FaceDetect の .etlt ファイルを engine file に変換します。  
 現時点におけるNVIDIAの仕様では、GPUのアーキテクチャごとに engine file の生成が必要です。  
+つまり、あるサーバで生成した engine file を別のサーバーにそのまま適用することはできません。  
 本レポジトリに格納された facedetect.engine は、実際に生成される engine file の参考例です。  
 engine fileへの変換は、Makefile に記載された以下のコマンドにより実行できます。
 ```
