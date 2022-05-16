@@ -11,7 +11,7 @@ tao-docker-build: ## TAO用コンテナをビルド
 	docker-compose -f docker-compose.yaml build
 
 tao-convert:
-	docker exec -it facedetect-tao-toolkit tao-converter -k nvidia_tlt -d 3,416,736 -e /app/src/facedetect.engine /app/src/facedetect.etlt
+	docker exec -it facedetect-tao-toolkit tao-converter -k nvidia_tlt -t fp16 -d 3,416,736 -e /app/src/facedetect.engine /app/src/facedetect.etlt
 
 tao-docker-login: ## TAO用コンテナにログイン
 	docker exec -it facedetect-tao-toolkit bash
