@@ -10,6 +10,7 @@ facedetect-on-tao-toolkit は、NVIDIA TAO TOOLKIT を用いて FaceDetect の A
 
 ## FaceDetectについて
 FaceDetect は、画像内の人の顔を検出し、カテゴリラベルを返すAIモデルです。  
+FaceDetectIR は、特徴抽出にResNet18を使用しており、混雑した場所でも正確に物体検出を行うことができます。
 
 ## 動作手順
 
@@ -29,3 +30,12 @@ tao-convert:
 
 ## engineファイルについて
 engineファイルである facedetect.engine は、[facedetect-on-deepstream](https://github.com/latonaio/facedetect-on-deepstream)と共通のファイルであり、本レポジトリで作成した engineファイルを、当該リポジトリで使用しています。  
+
+## 演算について
+本レポジトリでは、ニューラルネットワークのモデルにおいて、エッジコンピューティング環境での演算スループット効率を高めるため、FP16(半精度浮動小数点)を使用しています。  
+浮動小数点値の変更は、Makefileの以下の部分を変更し、engineファイルを生成してください。
+
+```
+tao-convert:
+	docker exec -it facedetect-tao-toolkit tao-converter -k nvidia_tlt -t fp16 -d 3,416,736 -e /app/src/facedetect.engine /app/src/facedetect.etlt
+```
